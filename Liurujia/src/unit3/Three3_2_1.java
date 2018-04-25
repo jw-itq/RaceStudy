@@ -19,7 +19,7 @@ public class Three3_2_1 {
 				int c = i*j;
 				String str = a+""+b+""+c+""+i+""+j;
 				boolean ok = true;
-				for(int t = 0;t<str.length();t++){//遍历str，只要存在有一个不属于n，那就是不属于
+				/*for(int t = 0;t<str.length();t++){//遍历str，只要存在有一个不属于n，那就是不属于
 					for(int k = 0;k<n.length();k++){
 						if(str.charAt(t)!=n.charAt(k)){
 							ok = false;//
@@ -31,7 +31,13 @@ public class Three3_2_1 {
 					if(ok==false){//如果匹配完所有的n都没有匹配的话，那就是说这个字符不属于这里
 						break;
 					}
-				}		
+				}*/	
+				//第二种方式，好像感觉比第一种方式慢一些
+				for(int t = 0;t<str.length();t++){
+					if(!n.contains(str.charAt(t)+"")){
+						ok = false;
+					}
+				}
 				if(ok){
 					count++;
 					System.out.printf("<%d>\n%5d\nX%4d\n-----\n%5d\n%-5d\n-----\n%5d\n",count,i,j,a,b,c);
