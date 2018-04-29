@@ -16,6 +16,15 @@ AACAAAGCAA
 AAGTTACCTT
 AAGTTACCAA
 TACTTACCAA
+
+ATGTTACCAT
+AAGTTACGAT
+AACAAAGCAA
+AAGTTACCTT
+AAGTTACCAA
+TACTTACCAA
+AACGTACCAA
+AACTTACCAA
 output£º
 AAGTTACCAA
 12
@@ -25,58 +34,64 @@ AAGTTACCAA
 
  */
 public class Example3_7 {
-	public static String f(List<String> str ,int column ,String result ,int n){
-		List<String> newStr = new ArrayList<String>();
-		String lin = "";
-		for(int i = 0;i<str.size()-1;i++){
-			String strOf = str.get(i);
-			str.set(i, str.get(0));
-			str.set(0, strOf);
-			int flag = -1;
-			for(int j = 0;j<str.size()-1;j++){
-				if(str.get(0).charAt(column)==str.get(j+1).charAt(column)){
-					flag = 0;
-					lin = str.get(0).charAt(column)+"";
-					newStr.add(str.get(j+1));
-					str.remove(j+1);
-					j--;
-					System.out.println(str.size()+"daxiao"+str.toString());
-				}else{
-					char[] ch = {str.get(0).charAt(column),str.get(j+1).charAt(column)};
-					System.out.println("-------------"+ch[0]+"****"+ch[1]+"&&&"+str.toString());
-					Arrays.sort(ch);
-					lin = ch[0]+"";
-					/*if(str.size()==2){
-						newStr.addAll(str);
-						System.out.println("!!!!!!!!!!!!!!!!newdesize"+newStr.toString());
-						break;
-					}*/
-				}
-			}
-			if(flag == 0){
-				flag = -1;
-				newStr.add(str.get(0));
-				str.remove(0);
-			}
-		}
-		if(column == n){
-			return result;
-		}
-		result +=lin;
-		System.out.println(result+"zifu___"+column);
-		return f(newStr,column+1,result,n);
-//		System.out.println(newStr.toString()+"****");
-//		System.out.println(str.toString()+"****");
-	}
-	public static void main(String[] args) {
-		Scanner scan = new Scanner(System.in);
-//		int n = scan.nextInt();
-//		int m = scan.nextInt();
-		List<String> list = new ArrayList<String>();
-		for(int i = 1;i<=6;i++){
-			list.add(scan.next());
-		}
-//		System.out.println(list.toString()+",,,"+list.size());
-		System.out.println(f(list,0,"",10));
-	}
+	 static int m;  
+	    static char[][] chs;  
+	    static char[] chars = {'A', 'C', 'G', 'T'};  
+	  
+	    static int hamming = 0;  
+	  
+	    public static void main(String[] args) {  
+	        Scanner read = new Scanner(System.in);  
+	        m = read.nextInt();  
+	        int n = read.nextInt();  
+	        read.nextLine();  
+	  
+	        chs = new char[m][n];  
+	  
+	        for (int i = 0; i < m; i++) {  
+	            chs[i] = read.nextLine().toCharArray();  
+	        }  
+	  
+	  
+	        for (int i = 0; i < n; i++) {  
+	            char max = checkMax(i);  
+	            System.out.print(max);  
+	        }  
+	  
+	        System.out.println(hamming);  
+	  
+	    }  
+	  
+	    private static char checkMax(int j) {  
+	        int[] result = new int[4]; // A C G T  
+	        for (int i = 0; i < m; i++) {  
+	            switch (chs[i][j]) {  
+	                case 'A':  
+	                    result[0]++;  
+	                    break;  
+	                case 'C':  
+	                    result[1]++;  
+	                    break;  
+	                case 'G':  
+	                    result[2]++;  
+	                    break;  
+	                case 'T':  
+	                    result[3]++;  
+	                    break;  
+	            }  
+	        }  
+	        // ÅÅÐò  
+	        int max = -1;  
+	        int index = -1; 
+	        System.out.println(Arrays.toString(result));
+	        for (int i = 0; i < 4; i++) {  
+	            if (max < result[i]) {  
+	                index = i;  
+	                max = result[i];  
+	  
+	            }  
+	        }  
+	        hamming += m - max;  
+	        return chars[index];  
+	    }  
 }
