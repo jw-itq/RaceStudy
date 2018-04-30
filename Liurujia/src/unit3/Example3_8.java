@@ -1,5 +1,6 @@
 package unit3;
 
+<<<<<<< HEAD
 import java.util.Scanner;
 
 /*
@@ -26,5 +27,24 @@ public class Example3_8 {
 		at = scan.nextInt();
 		b = scan.nextInt();
 		System.out.println("0."+fc(at%b*10)+"\n"+count);
+=======
+import java.math.BigDecimal;
+import java.util.Scanner;
+
+/*
+ * Ñ­»·Ð¡Êý
+ * 
+ */
+public class Example3_8 {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+//		int a = scan.nextInt();
+//		int b = scan.nextInt();
+		BigDecimal a = new BigDecimal(5);
+		BigDecimal b = new BigDecimal(43);
+//		BigDecimal bd = new BigDecimal(a*1.0/b);
+//		System.out.println(bd);
+		System.out.println(a.divide(b));
+>>>>>>> f71945bf7c2fa0739e8fcc848b6eef932a4cb377
 	}
 }
