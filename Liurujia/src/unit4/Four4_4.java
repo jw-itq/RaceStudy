@@ -16,10 +16,16 @@ public class Four4_4 {
 	static String[] ys;
 	//判断t的二进制是否都是1
 	public static boolean isOne(int t){
-		if(((t+1)^t)==t+t+1){
-			return true;
+		if(t==0){
+			return false;
 		}
-		return false;
+		while(t>0){
+			if((t&1)==0){
+				return false;
+			}
+			t>>=1;
+		}
+		return true;
 	}
 	//用来映射01串
 	public static void mapping(){
@@ -50,22 +56,24 @@ public class Four4_4 {
 		//我要将编码头做一个映射
 		ys = new String[bHead.length()];
 		mapping();
-		System.out.println(Arrays.toString(ys));
+		System.out.println("&&&&&&"+Arrays.toString(ys));
 		int i = 0;//主要的一个变量
-		while(i<bCode.length()){
-
-			String s = bCode.substring(i, i+3);
+		String s = bCode.substring(i, i+3);
+		while(Integer.parseInt(s)!=0){
 			i+=3;
 			int n = Integer.parseInt(s,2);//2进制转成10进制
 			System.out.println(n);
 			String sb = bCode.substring(i,i+n);
-			while(!isOne(Integer.parseInt(sb,2))){
-				System.out.println(i+"**********************"+i+n);
-				sb = bCode.substring(i,i+n);
+			System.out.println(Integer.parseInt(sb,2)+"&&&&");
+			while(!isOne(Integer.parseInt(sb,2))&&(i+n)<bCode.length()){
+				System.out.println(i+"**********************"+(i+n));
 				System.out.println(sb);
-//				System.out.println(bHead.charAt(getValue(sb))+" "+sb);
+				System.out.println(bHead.charAt(getValue(sb))+" "+sb);
 				i+=n;
+				sb = bCode.substring(i,i+n);
 			}
+			i+=n;
+			s = bCode.substring(i, i+3);
 		}
 	}
 }
