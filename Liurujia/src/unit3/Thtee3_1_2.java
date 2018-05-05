@@ -1,6 +1,5 @@
 package unit3;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 //蛇形填数
@@ -14,7 +13,7 @@ public class Thtee3_1_2 {
 		int n = scan.nextInt();
 		int[][] arr = new int[n][n];
 		int start = 0;
-		for(int i = 0;i<n/2;i++){
+		for(int i = 0;i<=n/2;i++){
 			//这里是往下
 			for(int j = i;j<n;j++){
 				if(arr[j][n-i-1]==0){
@@ -42,7 +41,10 @@ public class Thtee3_1_2 {
 		}
 		
 		for(int i = 0;i<n;i++){
-			System.out.println(Arrays.toString(arr[i]));
+			for(int j = 0;j<arr[i].length;j++){
+				System.out.print(arr[i][j]+" ");
+			}
+			System.out.println();
 		}
 	}
 }
