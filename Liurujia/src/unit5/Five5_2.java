@@ -1,12 +1,15 @@
 package unit5;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 /*
  * 木块问题
- * 
+ * 这果然是个综合性练习集合的例子
+ * 用到了很多新东西，写了好久，但是最后我还是写出来了，主要是围着那个二维集合操作，其中还用到了反射
+ * 实践才是硬道理
  */
 public class Five5_2 {
 	//创建一个集合里面的集合，相当于一个二维数组
@@ -40,7 +43,9 @@ public class Five5_2 {
 			}
 		}
 		//把a放到b所有木块堆的顶部
-		list.get(b).add(a);
+		int ib = returnT(b);
+		list.get(ib).add(a);
+		list.get(i).remove(list.get(i).indexOf(a));
 	}
 	
 	//pile a onto b
@@ -56,17 +61,32 @@ public class Five5_2 {
 		i = returnT(a);
 		int n = list.get(i).size();
 		int ib = returnT(b);
+		if(i==ib){//非法指令
+			return;
+		}
 		int k = list.get(ib).indexOf(b);//b所有的具体的索引
 		if(i!=-1||ib!=-1){
 			for(int j = list.get(i).indexOf(a);j<n;j++){
-				System.out.println(list.get(i).get(j)+"******"+list.get(i).size()+"&&"+j+"^^"+ib);
+//				System.out.println(list.get(i).get(j)+"******"+list.get(i).size()+"&&"+j+"^^"+ib);
 				list.get(ib).add(list.get(i).get(j));
 			}
-			for(int j = list.get(i).indexOf(a);j<list.get(i).size();j++){
-				list.get(i).remove(j);
+			
+			//通过反射拿到removeRange方法
+			try {
+				//拿到ArrayList的class对象
+				Class<?> clazz = Class.forName("java.util.ArrayList");
+				//通过clazz对象拿到那个不可访问的removeRange方法,以及参数
+				Method meth = clazz.getDeclaredMethod("removeRange", int.class,int.class);
+				//将这个方法的访问权限设置成可访问
+				meth.setAccessible(true);
+				//调用这个方法
+				meth.invoke(list.get(i), list.get(i).indexOf(a),n);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
-		System.out.println("结束");
+//		System.out.println("结束");
 	}
 	
 	//pile a over b
