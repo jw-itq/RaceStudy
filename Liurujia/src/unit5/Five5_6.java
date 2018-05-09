@@ -1,6 +1,8 @@
 package unit5;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayDeque;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -103,8 +105,11 @@ public class Five5_6 {
 				}
 				str = scan.next();
 			}
-			System.out.println("Scenario #"+bigCount);
-			System.out.println(count);
+//			System.out.println("Scenario #"+(++bigCount));
+//			System.out.println(count);
+			PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));
+			out.println("Scenario #"+(++bigCount));
+			out.println(count);
 			n = scan.nextInt();
 		}
 	}
