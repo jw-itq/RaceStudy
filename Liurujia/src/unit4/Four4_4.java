@@ -64,18 +64,18 @@ public class Four4_4 {
 			int n = Integer.parseInt(s,2);//2进制转成10进制
 //			System.out.println(n+"zaizhelizaizheli"+s);
 			String sb = bCode.substring(i,i+n);
-<<<<<<< HEAD
+/*<<<<<<< HEAD
 			System.out.println(Integer.parseInt(sb,2)+"&&&&");
 			while(!isOne(Integer.parseInt(sb,2))&&(i+n)<bCode.length()){
 				System.out.println(i+"**********************"+(i+n));
 				System.out.println(sb);
 				System.out.println(bHead.charAt(getValue(sb))+" "+sb);
-=======
+=======*/
 			int k = Integer.parseInt(sb,2);
 			
 			while(!isOne(Integer.parseInt(sb,2))&&(i+n)<bCode.length()){
 				System.out.println(bHead.charAt(getValue(sb))+" --->"+sb);
->>>>>>> f62d8247e950cef90bc985d02bfb6c84daf99d55
+//>>>>>>> f62d8247e950cef90bc985d02bfb6c84daf99d55
 				i+=n;
 				sb = bCode.substring(i,i+n);
 			}
