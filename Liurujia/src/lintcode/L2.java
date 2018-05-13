@@ -16,8 +16,8 @@ public class L2 {
     }*/
 	public long trailingZeros(long n) {
         // write your code here, try to do it without arithmetic operators.
-		int sum = 0;
-		for(int i = 5;i<=n;i*=5){
+		long sum = 0;
+		for(long i = 5;i<=n;i*=5){
 			sum +=n/i;
 		}
 		return sum;
