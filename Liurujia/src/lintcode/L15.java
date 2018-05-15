@@ -40,6 +40,7 @@ public class L15 {
 	
 	
 	private void permute(int[] nums, int k, int m, List<List<Integer>> list) {
+		printCallStatck();
 		if(k == m){
 			List<Integer> ls = new ArrayList<>();
 			for(int i = 0;i<=m;i++){
@@ -64,6 +65,6 @@ public class L15 {
 	public static void main(String[] args) {
 		int[] ar = {1,2,3};
 		L15 one = new L15();
-//		one.permute(ar, 0, ar.length-1);
+		one.permute(ar);
 	}
 }	
