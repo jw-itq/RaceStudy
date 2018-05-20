@@ -55,7 +55,7 @@ public class L33 {
 				return false;
 			}
 		}
-		//ÅĞ¶Ï×ó±ß¶Ô½ÇÏß
+		//ÅĞ¶Ï×ó±ß¶Ô½ÇÏß0
 		for(int i = k-1,j = t-1;i>=0&&j>=0;i--,j--){
 			if(arr[i][j]=='Q'){
 				return false;
