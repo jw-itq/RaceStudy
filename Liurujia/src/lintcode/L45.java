@@ -15,6 +15,16 @@ import java.util.Arrays;
 
 首先找到所以的两个不重叠的子数组A和B，最后进行分割的时候来计算差的绝对值
 
+大概的思路是
+定义四个数组
+leftMaxs, leftMins
+rightMaxs, rightMinx
+
+先从左往右找，把每个index的左边的最大和左边的最小找出来存到 leftMaxs, leftMins
+再从右往左找，把每个index的右边的最大和右边的最小找出来存到 rightMaxs, rightMins
+然后再最终找一遍, 把每个index的 abs(leftMaxs[index] - rightMins[index]) 和 abs(rightMaxs[index] - leftMins[index])求最大
+
+最后一遍遍历下来就可以找到最大的不交叉连续数组的最大差了
 [1, 3, 3, 3]
 [3, 2, 1, 1]
 [1, 1, -3, -3]
