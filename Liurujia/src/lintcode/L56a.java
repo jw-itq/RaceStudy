@@ -6,13 +6,13 @@ import java.util.Collections;
 /*
  * 两数之和
  */
-public class L56 {
-	public int[] twoSum(int[] numbers, int target) {
+public class L56a {
+	/*public int[] twoSum(int[] numbers, int target) {
         // write your code here
 		int[] result = new int[2];
 		Arrays.sort(numbers);
 		if(target<0){
-			Arrays.sort(numbers,Collections.reverseOrder());
+			//Arrays.sort(numbers,Collections.reverseOrder());
 		}
 		int i = numbers.length-1;
 		while(0<=i&&numbers[i]>=target) i--;
@@ -27,9 +27,9 @@ public class L56 {
 			}
 		}
 		return result;
-    }
+    }*/
 	public static void main(String[] args) {
 		int[] num = {1,0,-1};
-		System.out.println(Arrays.toString(new L56().twoSum(num, 9)));
+		//System.out.println(Arrays.toString(new L56().twoSum(num, 9)));
 	}
 }
