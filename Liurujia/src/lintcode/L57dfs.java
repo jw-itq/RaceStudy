@@ -9,53 +9,55 @@ import java.util.List;
  */
 public class L57dfs {
 	
+	public List<List<Integer>> fourSum(int[] numbers, int target) {
+        // write your code here
+		Arrays.sort(numbers);
+		List<List<Integer>> list = new ArrayList<>();
+		dfs(list,new ArrayList<Integer>(),numbers,0,target);
+		return list;
+    }
 	
-	/*public ArrayList<ArrayList<Integer>> fourSum1(int[] num, int target) {
-		ArrayList<ArrayList<Integer>> rst = new ArrayList<>();
-		Arrays.sort(num);
-
-		for (int i = 0; i < num.length - 3; i++) {
-			if (i != 0 && num[i] == num[i - 1]) {
+	private void dfs(List<List<Integer>> list, ArrayList<Integer> ls,
+			int[] numbers, int t, int target) {
+		if(ls.size()==4){
+			if(getAdd(ls)==target){
+				list.add(new ArrayList<>(ls));
+			}
+			return;
+		}
+		if(t>numbers.length-1){
+			return;
+		}
+		for(int i = t;i<numbers.length;i++){
+			if(i!=t&&numbers[i]==numbers[i-1]){
 				continue;
 			}
-
-			for (int j = i + 1; j < num.length - 2; j++) {
-				if (j != i + 1 && num[j] == num[j - 1])
-					continue;
-
-				int left = j + 1;
-				int right = num.length - 1;
-				while (left < right) {
-					int sum = num[i] + num[j] + num[left] + num[right];
-					if (sum < target) {
-						left++;
-					} else if (sum > target) {
-						right--;
-					} else {
-						ArrayList<Integer> tmp = new ArrayList<Integer>();
-						tmp.add(num[i]);
-						tmp.add(num[j]);
-						tmp.add(num[left]);
-						tmp.add(num[right]);
-						rst.add(tmp);
-						left++;
-						right--;
-						while (left < right && num[left] == num[left - 1]) {
-							left++;
-						}
-						while (left < right && num[right] == num[right + 1]) {
-							right--;
-						}
-					}
+			ls.add(numbers[i]);
+			if(getAdd(ls)>target&&numbers[i]>0){
+				if(!ls.isEmpty()){
+					ls.remove(ls.size()-1);
 				}
+				return;
+			}
+			System.out.println(ls);
+			dfs(list,ls,numbers,i+1,target);
+			if(!ls.isEmpty()){
+				ls.remove(ls.size()-1);
 			}
 		}
+	}
 
-		return rst;
-	}*/
+	private int getAdd(ArrayList<Integer> ls) {
+		int sum = 0;
+		for(Integer i : ls){
+			sum += i;
+		}
+		return sum;
+	}
+
 	public static void main(String[] args) {
-		int[] ar = {-2,-3,5,-1,-4,5,-11,7,1,2,3,4,-7,-1,-2,-3,-4,-5};
-//		List<ArrayList<Integer>> list = new L57dfs().fourSum(ar, 2);
-
+		int[] ar = {1,0,-1,-1,-1,-1,0,1,1,1,2};
+		List<List<Integer>> list = new L57dfs().fourSum(ar, 2);
+		System.out.println(list.size());
 	}
 }
