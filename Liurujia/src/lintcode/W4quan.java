@@ -10,12 +10,12 @@ import java.util.List;
 public class W4quan {
 	public List<List<String>> qw(String str){
 		List<List<String>> list = new ArrayList<>();
-		dfs(list,str,new boolean[str.length()],new ArrayList<String>(),0);
+		dfs(list,new boolean[str.length()],new ArrayList<String>(),str,0);
 		return list;
 	}
-
-	private void dfs(List<List<String>> list,String str, boolean[] bs,
-			ArrayList<String> ls, int t) {
+	
+	private void dfs(List<List<String>> list, boolean[] bs,
+			ArrayList<String> ls, String str, int t) {
 		if(ls.size()==str.length()){
 			list.add(new ArrayList<>(ls));
 			return;
@@ -27,13 +27,13 @@ public class W4quan {
 			if(!bs[i]){
 				bs[i] = true;
 				ls.add(str.charAt(i)+"");
-				dfs(list,str,bs,ls,t+1);
-				ls.remove(ls.size()-1);
+				dfs(list,bs,ls,str,t+1);
 				bs[i] = false;
-			}	
+				ls.remove(ls.size()-1);
+			}
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		List<List<String>> ls = new W4quan().qw("abc");
 		System.out.println(ls.toString());
