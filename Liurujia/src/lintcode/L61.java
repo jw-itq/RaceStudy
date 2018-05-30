@@ -1,5 +1,7 @@
 package lintcode;
 
+import java.util.Map;
+
 /*
  * 61. ËÑË÷Çø¼ä
 
