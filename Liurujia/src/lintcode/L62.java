@@ -1,10 +1,7 @@
 package lintcode;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /*
  * 62. ËÑË÷Ğı×ªÅÅĞòÊı×é
@@ -38,6 +35,9 @@ public class L62 {
 	public int search(int[] A, int target) {
         // write your code here
 		List<Integer> list = new ArrayList<>();
+		for(int i = 0;i<A.length;i++){
+			list.add(A[i]);
+		}
 		return list.indexOf(target);
     }
 	

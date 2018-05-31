@@ -8,14 +8,6 @@ import java.util.Queue;
  */
 
 //Definition of TreeNode:
-class TreeNode {
-     public int val;
-     public TreeNode left, right;
-     public TreeNode(int val) {
-         this.val = val;
-         this.left = this.right = null;
-   }
-}
 
 public class L7 {
 	public static Queue<TreeNode> queue = new LinkedList<>();//用于保存将树结构序列化成字符串时使用来保存   
