@@ -1,5 +1,7 @@
 package leetcode;
 
+import java.util.Arrays;
+
 /*
  * 给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
 
@@ -43,6 +45,9 @@ for (int i = 0; i < len; i++) {
  */
 public class L26 {
     public int removeDuplicates(int[] nums) {
+    	if(nums.length==0||nums==null){
+    		return 0;
+    	}
         int number = 0;
         int t = 0;
         for(int i = 0;i<nums.length-1;i++){
@@ -51,10 +56,11 @@ public class L26 {
         	}
         }
         nums[t] = nums[nums.length-1];
-        return t;
+        return t+1;
     }
     public static void main(String[] args) {
     	int[] nums = {0,0,1,1,1,2,2,3,3,4};
 		System.out.println(new L26().removeDuplicates(nums));
+		System.out.println(Arrays.toString(nums));
 	}
 }
